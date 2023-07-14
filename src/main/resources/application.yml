@@ -1,0 +1,24 @@
+spring:
+  data.mongodb:
+    authentication-database: admin
+    username: user
+    password: pass
+    database: currency_rate
+    port: 27017
+    host: localhost
+
+server:
+  port: 8080
+
+currency:
+  external:
+    access-key: qBC9SqdHcGg6WJ0vKLLbPUM1wRX95eCK
+    base-url: https://api.apilayer.com/exchangerates_data
+    latest-url: ${currency.external.base-url}/latest
+    update-rate-cron: '0 0 1 * * ?' # At 01:00 every day
+
+logging.level:
+  org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+  logging.level.org.springframework.web: DEBUG
+  net.net.currencyservice: DEBUG
+  ROOT: INFO
